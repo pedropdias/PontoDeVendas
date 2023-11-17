@@ -10,9 +10,41 @@ package pontodevendas;
  */
 public class JanelaAdicionarItem extends javax.swing.JDialog {
 
-    /**
-     * Creates new form JanelaAdicionarItem
-     */
+    private OperacaoAdicionarItemVenda operacaoAdicionarItemVenda;
+    private ItemVenda itemVenda;
+    private Produto produto;
+    private boolean confirmado;
+    
+    public boolean operacaoConfirmada(){
+        return confirmado;
+    }
+    
+    public static boolean executar(OperacaoAdicionarItemVenda operacaoAdicionarItemVenda,
+                                   ItemVenda itemVenda){
+        JanelaAdicionarItem janelaAdicionarItem = new JanelaAdicionarItem(null, operacaoAdicionarItemVenda, itemVenda);
+        janelaAdicionarItem.setLocationRelativeTo(null);
+        janelaAdicionarItem.setVisible(true);
+        return janelaAdicionarItem.operacaoConfirmada();
+    }
+    
+    public JanelaAdicionarItem(java.awt.Frame parent,
+                                OperacaoAdicionarItemVenda operacaoAdicionarItemVenda,
+                                ItemVenda itemVenda){
+        super(parent, true);
+        
+        confirmado = false;
+        this.operacaoAdicionarItemVenda = operacaoAdicionarItemVenda;
+        this.itemVenda = itemVenda;
+        this.produto = produto;
+        
+        initComponents();
+        
+        buCancelar.setVisible(true);
+        edNumeroItem.setEnabled(true);
+        edCodigo.setEnabled(true);
+        edQntVenda.setEnabled(true);
+    }
+    
     public JanelaAdicionarItem(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -31,9 +63,9 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        edUnidade = new javax.swing.JTextField();
+        edQntVenda = new javax.swing.JTextField();
         edCodigo = new javax.swing.JTextField();
-        edNome = new javax.swing.JTextField();
+        edNumeroItem = new javax.swing.JTextField();
         buOk = new javax.swing.JButton();
         buCancelar = new javax.swing.JButton();
 
@@ -48,9 +80,9 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
 
         jLabel3.setText("Quantidade:");
 
-        edUnidade.addActionListener(new java.awt.event.ActionListener() {
+        edQntVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edUnidadeActionPerformed(evt);
+                edQntVendaActionPerformed(evt);
             }
         });
 
@@ -60,9 +92,9 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
             }
         });
 
-        edNome.addActionListener(new java.awt.event.ActionListener() {
+        edNumeroItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edNomeActionPerformed(evt);
+                edNumeroItemActionPerformed(evt);
             }
         });
 
@@ -93,9 +125,9 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(edUnidade)
+                        .addComponent(edQntVenda)
                         .addComponent(edCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(edNome, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edNumeroItem, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -114,7 +146,7 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(edNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edNumeroItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buOk))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -124,43 +156,35 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(edUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edQntVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void edUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edUnidadeActionPerformed
+    private void edQntVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edQntVendaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edUnidadeActionPerformed
+    }//GEN-LAST:event_edQntVendaActionPerformed
 
     private void edCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edCodigoActionPerformed
 
-    private void edNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edNomeActionPerformed
+    private void edNumeroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edNumeroItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edNomeActionPerformed
+    }//GEN-LAST:event_edNumeroItemActionPerformed
 
     private void buOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buOkActionPerformed
-//        if(operacaoCadastroProduto != OperacaoCadastroProduto.consultar){
-//            produto.alterarNome(edNome.getText());
-//            produto.alterarCodigo(Integer.parseInt(edCodigo.getText()));
-//            produto.alterarUnidade(edUnidade.getText());
-//            produto.alterarPreco(Double.parseDouble(edPreco.getText()));
-//            produto.alterarQntEstoque(Integer.parseInt(edQntEstoque.getText()));
-//            String dataUltimaVendaString = edDataUltimaVenda.getText();
-//            try{
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//                Date dataUltimaVenda = dateFormat.parse(dataUltimaVendaString);
-//                produto.alterarDataUltimaVenda(dataUltimaVenda);
-//            } catch(ParseException e){
-//
-//            }
-//            confirmado = true;
-//        }
-//        dispose();
+
+            itemVenda.alterarNumeroItem(Integer.parseInt(edNumeroItem.getText()));
+            itemVenda.alterarCodigo(Integer.parseInt(edCodigo.getText()));
+            itemVenda.alterarQntVenda(Integer.parseInt(edQntVenda.getText()));
+            itemVenda.alterarPrecoProduto(itemVenda.obterPrecoProduto());
+            itemVenda.alterarItemTotal(itemVenda.obterItemTotal());
+            confirmado = true;
+        
+        dispose();
     }//GEN-LAST:event_buOkActionPerformed
 
     private void buCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCancelarActionPerformed
@@ -213,8 +237,8 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
     private javax.swing.JButton buCancelar;
     private javax.swing.JButton buOk;
     private javax.swing.JTextField edCodigo;
-    private javax.swing.JTextField edNome;
-    private javax.swing.JTextField edUnidade;
+    private javax.swing.JTextField edNumeroItem;
+    private javax.swing.JTextField edQntVenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

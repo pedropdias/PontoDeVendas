@@ -33,10 +33,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="edUnidade" alignment="0" max="32767" attributes="0"/>
+                      <Component id="edQntVenda" alignment="0" max="32767" attributes="0"/>
                       <Component id="edCodigo" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="edNome" alignment="1" min="-2" pref="281" max="-2" attributes="0"/>
+                  <Component id="edNumeroItem" alignment="1" min="-2" pref="281" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="29" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -60,7 +60,7 @@
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="edNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="edNumeroItem" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buOk" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -72,7 +72,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="edUnidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="edQntVenda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
@@ -103,9 +103,9 @@
         <Property name="text" type="java.lang.String" value="Quantidade:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="edUnidade">
+    <Component class="javax.swing.JTextField" name="edQntVenda">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edUnidadeActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edQntVendaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="edCodigo">
@@ -113,9 +113,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edCodigoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="edNome">
+    <Component class="javax.swing.JTextField" name="edNumeroItem">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edNomeActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edNumeroItemActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buOk">

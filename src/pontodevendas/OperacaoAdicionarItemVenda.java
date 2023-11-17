@@ -9,5 +9,5 @@ package pontodevendas;
  * @author Pedro Dias
  */
 public enum OperacaoAdicionarItemVenda {
-    
+    incluir
 }

@@ -18,6 +18,8 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
     private ControladorItemVenda controladorItemVenda;
     private ControladorProduto controladorProduto;
     private FormaPagamento formaPagamento;
+    private Venda venda;
+    
     
     public JanelaCadastroVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -135,10 +137,11 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buCadastrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCadastrarVendaActionPerformed
-//                ItemVenda itemVenda = new ItemVenda();
-                
-        //        if(JanelaCadastroProduto.executar(OperacaoCadastroProduto.incluir, produto)){
-            //            tabelaProduto.incluirProduto(produto);
+
+            //        int indice = tabProduto.getSelectedRow();
+        //        if(indice >= 0){
+            //            Produto produto = tabelaProduto.obterProduto(indice);
+            //            JanelaCadastroProduto.executar(OperacaoCadastroProduto.consultar, produto);
             //        }
     }//GEN-LAST:event_buCadastrarVendaActionPerformed
 
@@ -153,23 +156,26 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_buExcluirItemActionPerformed
 
     private void buAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buAdicionarItemActionPerformed
+//                ItemVenda itemVenda = new ItemVenda();
+//                itemVenda.alterarNumeroItem(Integer.parseInt("21"));
+//                itemVenda.alterarCodigo(Integer.parseInt("1111"));
+//                itemVenda.alterarQntVenda(Integer.parseInt("1111"));
+//                itemVenda.alterarPrecoProduto(Double.parseDouble("1111"));
+//                itemVenda.alterarItemTotal(Double.parseDouble("1111"));
+//                controladorItemVenda.incluirItemVendaTabela(itemVenda);
+
                 ItemVenda itemVenda = new ItemVenda();
-                itemVenda.alterarNumeroItem(Integer.parseInt("21"));
-                itemVenda.alterarCodigo(Integer.parseInt("1111"));
-                itemVenda.alterarQntVenda(Integer.parseInt("1111"));
-                itemVenda.alterarPrecoProduto(Double.parseDouble("1111"));
-                itemVenda.alterarItemTotal(Double.parseDouble("1111"));
-                controladorItemVenda.incluirItemVendaTabela(itemVenda);
+                
+                if(JanelaAdicionarItem.executar(OperacaoAdicionarItemVenda.incluir, itemVenda)){
+                        controladorItemVenda.incluirItemVendaTabela(itemVenda);
+                    }
         
-        //        int indice = tabProduto.getSelectedRow();
-        //        if(indice >= 0){
-            //            Produto produto = tabelaProduto.obterProduto(indice);
-            //            JanelaCadastroProduto.executar(OperacaoCadastroProduto.consultar, produto);
-            //        }
+        
     }//GEN-LAST:event_buAdicionarItemActionPerformed
 
     private void buFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buFormaPagamentoActionPerformed
-        // TODO add your handling code here:
+        FormaPagamento formaPagamento = new FormaPagamento();
+        JanelaFormaPagamento.executar(venda, formaPagamento);
     }//GEN-LAST:event_buFormaPagamentoActionPerformed
 
     /**

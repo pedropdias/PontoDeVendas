@@ -59,6 +59,15 @@ public class PontoDeVendas {
         System.out.println(venda.obterItensVenda());
         
         
+        Produto produto = new Produto();
+        produto.alterarCodigo(1234);
+        produto.alterarNome("Coca-Cola");
+        produto.alterarPreco(5.99);
+        produto.alterarQntEstoque(12);
+        produto.alterarDataUltimaVenda(date);
+        
+        
+        
         FormaPagamento formaPagamento = new FormaPagamento();
         controladorVenda.registrarFormaPagamento(venda, formaPagamento);
         
