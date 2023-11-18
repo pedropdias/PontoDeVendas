@@ -42,6 +42,7 @@ public class JanelaProdutos extends javax.swing.JDialog {
         buExcluir = new javax.swing.JButton();
         buConsultar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        buVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,6 +90,13 @@ public class JanelaProdutos extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Produtos");
 
+        buVoltar.setText("Voltar");
+        buVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,7 +116,8 @@ public class JanelaProdutos extends javax.swing.JDialog {
                                 .addComponent(buCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(1, 1, 1))
                             .addComponent(buEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buConsultar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                            .addComponent(buConsultar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                            .addComponent(buVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
@@ -126,7 +135,8 @@ public class JanelaProdutos extends javax.swing.JDialog {
                         .addComponent(buExcluir)
                         .addGap(18, 18, 18)
                         .addComponent(buConsultar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buVoltar))
                     .addComponent(jScrollPane1))
                 .addGap(29, 29, 29))
         );
@@ -165,6 +175,10 @@ public class JanelaProdutos extends javax.swing.JDialog {
               JanelaCadastroProduto.executar(OperacaoCadastroProduto.consultar, produto);
         }
     }//GEN-LAST:event_buConsultarActionPerformed
+
+    private void buVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_buVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,6 +228,7 @@ public class JanelaProdutos extends javax.swing.JDialog {
     private javax.swing.JButton buConsultar;
     private javax.swing.JButton buEditar;
     private javax.swing.JButton buExcluir;
+    private javax.swing.JButton buVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabProduto;

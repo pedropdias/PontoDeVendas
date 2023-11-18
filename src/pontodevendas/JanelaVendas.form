@@ -39,6 +39,7 @@
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
                           <Component id="buConsultar" alignment="0" pref="140" max="32767" attributes="0"/>
+                          <Component id="buVoltar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
@@ -52,11 +53,13 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="buCadastrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="buConsultar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="buVoltar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="418" max="-2" attributes="0"/>
               </Group>
@@ -105,6 +108,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Vendas"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buVoltar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buVoltarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

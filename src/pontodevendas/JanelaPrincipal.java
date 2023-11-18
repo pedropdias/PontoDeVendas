@@ -98,15 +98,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void produtosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtosBtnActionPerformed
-        // TODO add your handling code here:
+        JanelaProdutos janelaProdutos = new JanelaProdutos(this, true);
+        janelaProdutos.setLocationRelativeTo(null);
+        janelaProdutos.setVisible(true);
     }//GEN-LAST:event_produtosBtnActionPerformed
 
     private void vendasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendasBtnActionPerformed
-        // TODO add your handling code here:
+        JanelaVendas janelaVendas = new JanelaVendas(this, true);
+        janelaVendas.setLocationRelativeTo(null);
+        janelaVendas.setVisible(true);
     }//GEN-LAST:event_vendasBtnActionPerformed
 
     private void fecharBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharBtnActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_fecharBtnActionPerformed
 
     /**

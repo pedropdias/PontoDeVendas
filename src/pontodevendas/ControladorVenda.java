@@ -101,9 +101,9 @@ public class ControladorVenda extends AbstractTableModel {
 
             if (formaPagamento != null) {
                 if (formaPagamento.obterFormaPagamento()) { // Se for dinheiro
-                    setValueAt("dinheiro", row, column);
+                    setValueAt("Dinheiro", row, column);
                 } else {
-                    setValueAt(formaPagamento.obterNumCartao(), row, column);
+                    setValueAt("Cartão", row, column);
                 }
             }
             break;
@@ -135,6 +135,7 @@ public class ControladorVenda extends AbstractTableModel {
     public void adicionarItemVenda(Venda venda, int numeroItem, int codigoProduto, int qntVenda) {
         controladorItemVenda.incluirItemVenda(numeroItem, codigoProduto, qntVenda, controladorProduto);
         atualizarValorTotalVenda(venda);
+        fireTableDataChanged();
     }
 
     public void removerItemVenda(Venda venda, int numeroItem) {
@@ -162,7 +163,7 @@ public class ControladorVenda extends AbstractTableModel {
 
     public void registrarFormaPagamento(Venda venda, FormaPagamento formaPagamentot) {
         venda.alterarFormaPagamento(formaPagamentot.obterFormaPagamento());
-        venda.alterarNumCartao("2345");
+        venda.alterarNumCartao(formaPagamentot.obterNumCartao());
     }
 
     public double calcularValorTotalVenda(Venda venda) {

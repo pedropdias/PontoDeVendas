@@ -27,6 +27,10 @@ public class JanelaVendas extends javax.swing.JDialog {
         controladorVenda = new ControladorVenda(controladorItemVenda, controladorProduto);
         tabVenda.setModel(controladorVenda);
     }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,6 +46,7 @@ public class JanelaVendas extends javax.swing.JDialog {
         buConsultar = new javax.swing.JButton();
         buCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        buVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -75,6 +80,13 @@ public class JanelaVendas extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Vendas");
 
+        buVoltar.setText("Voltar");
+        buVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,7 +104,8 @@ public class JanelaVendas extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(1, 1, 1))
-                            .addComponent(buConsultar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                            .addComponent(buConsultar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(buVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
@@ -101,11 +114,13 @@ public class JanelaVendas extends javax.swing.JDialog {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buCadastrar)
                         .addGap(18, 18, 18)
-                        .addComponent(buConsultar))
+                        .addComponent(buConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buVoltar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -167,6 +182,10 @@ public class JanelaVendas extends javax.swing.JDialog {
 //        controladorItemVenda.incluirItemVenda(47, 1234, 3, controladorProduto);
     }//GEN-LAST:event_buCadastrarActionPerformed
 
+    private void buVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_buVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,6 +231,7 @@ public class JanelaVendas extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buCadastrar;
     private javax.swing.JButton buConsultar;
+    private javax.swing.JButton buVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabVenda;

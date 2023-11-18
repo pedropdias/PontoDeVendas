@@ -26,6 +26,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         initComponents();
         controladorItemVenda = new ControladorItemVenda();
         tabItemVenda.setModel(controladorItemVenda);
+        venda = new Venda();
         
     }
 
@@ -45,6 +46,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         buExcluirItem = new javax.swing.JButton();
         buAdicionarItem = new javax.swing.JButton();
         buFormaPagamento = new javax.swing.JButton();
+        buVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,6 +94,13 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
             }
         });
 
+        buVoltar.setText("Voltar");
+        buVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,11 +116,13 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(buExcluirItem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buCadastrarVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(1, 1, 1))
                             .addComponent(buAdicionarItem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(buFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buCadastrarVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(1, 1, 1)))
                         .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
@@ -128,7 +139,10 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(buFormaPagamento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buCadastrarVenda))
+                        .addComponent(buCadastrarVenda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buVoltar)
+                        .addGap(1, 1, 1))
                     .addComponent(jScrollPane1))
                 .addGap(19, 19, 19))
         );
@@ -138,11 +152,19 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
 
     private void buCadastrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCadastrarVendaActionPerformed
 
-            //        int indice = tabProduto.getSelectedRow();
-        //        if(indice >= 0){
-            //            Produto produto = tabelaProduto.obterProduto(indice);
-            //            JanelaCadastroProduto.executar(OperacaoCadastroProduto.consultar, produto);
-            //        }
+        // Adiciona itens à venda
+        for (int i = 0; i < controladorItemVenda.getRowCount(); i++) {
+            ItemVenda item = controladorItemVenda.obterItemVenda(i);
+            controladorVenda.adicionarItemVenda(venda, item.obterNumeroItem(), item.obterCodigo(), item.obterQntVenda());
+        }
+
+        // Registra a venda
+        controladorVenda.registrarVenda(venda);
+
+        // Limpa a tabela de itens
+        controladorItemVenda.limparItensVendaTabela();
+        // Atualiza a tabela de vendas
+        firePropertyChange("vendas", null, null);
     }//GEN-LAST:event_buCadastrarVendaActionPerformed
 
     private void buExcluirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buExcluirItemActionPerformed
@@ -177,6 +199,10 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         FormaPagamento formaPagamento = new FormaPagamento();
         JanelaFormaPagamento.executar(venda, formaPagamento);
     }//GEN-LAST:event_buFormaPagamentoActionPerformed
+
+    private void buVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_buVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,6 +251,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
     private javax.swing.JButton buCadastrarVenda;
     private javax.swing.JButton buExcluirItem;
     private javax.swing.JButton buFormaPagamento;
+    private javax.swing.JButton buVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabItemVenda;

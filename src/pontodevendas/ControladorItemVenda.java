@@ -106,6 +106,11 @@ public class ControladorItemVenda extends AbstractTableModel {
         itensVenda.remove(indice);
         fireTableRowsDeleted(indice, indice);
     }
+    
+    public void limparItensVendaTabela() {
+        itensVenda.clear();
+        fireTableDataChanged(); // Notifica a tabela sobre as mudanças
+    }
     //
 
         
