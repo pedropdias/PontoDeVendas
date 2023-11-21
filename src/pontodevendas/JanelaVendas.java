@@ -18,13 +18,14 @@ public class JanelaVendas extends javax.swing.JDialog {
 
     private ControladorVenda controladorVenda;
     private ControladorItemVenda controladorItemVenda;
-    private ControladorProduto controladorProduto;
+    private static ControladorProduto tabelaProduto;
     private FormaPagamento formaPagamento;
     
-    public JanelaVendas(java.awt.Frame parent, boolean modal) {
+    public JanelaVendas(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto) {
         super(parent, modal);
         initComponents();
-        controladorVenda = new ControladorVenda(controladorItemVenda, controladorProduto);
+        this.tabelaProduto = tabelaProduto;
+        controladorVenda = new ControladorVenda(controladorItemVenda, tabelaProduto);
         tabVenda.setModel(controladorVenda);
     }
     
@@ -148,38 +149,42 @@ public class JanelaVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_buConsultarActionPerformed
 
     private void buCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCadastrarActionPerformed
+        JanelaCadastroVenda janelaCadastroVenda = new JanelaCadastroVenda(null, true, tabelaProduto);
+        janelaCadastroVenda.setLocationRelativeTo(null);
+        janelaCadastroVenda.setVisible(true);
+
         Venda venda = new Venda();
-        String dataString = "21/11/2023";
-
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate dataVenda = LocalDate.parse(dataString, formatter);
-            venda.alterarDataVenda(dataVenda);
-        } catch (DateTimeParseException e) {
-            // Lidar com o caso em que a String não pode ser convertida para LocalDate
-            System.out.println("Formato de data inválido: " + dataString);
-        }
-        
-        String horaString = "14:30";
-
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-            LocalTime horaVenda = LocalTime.parse(horaString, formatter);
-            venda.alterarHoraVenda(horaVenda);
-        } catch (DateTimeParseException e) {
-            // Lidar com o caso em que a String não pode ser convertida para LocalTime
-            System.out.println("Formato de hora inválido: " + horaString);
-        }
-        
-        venda.alterarValorTotalVenda(Double.parseDouble("51.99"));
-
-        venda.alterarFormaPagamento(true);
-        
-//        if(JanelaCadastroProduto.executar(OperacaoCadastroProduto.incluir, produto)){
-//            tabelaProduto.incluirProduto(produto);
+//        String dataString = "21/11/2023";
+//
+//        try {
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//            LocalDate dataVenda = LocalDate.parse(dataString, formatter);
+//            venda.alterarDataVenda(dataVenda);
+//        } catch (DateTimeParseException e) {
+//            // Lidar com o caso em que a String não pode ser convertida para LocalDate
+//            System.out.println("Formato de data inválido: " + dataString);
 //        }
-        controladorVenda.incluirVenda(venda);
-//        controladorItemVenda.incluirItemVenda(47, 1234, 3, controladorProduto);
+//        
+//        String horaString = "14:30";
+//
+//        try {
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+//            LocalTime horaVenda = LocalTime.parse(horaString, formatter);
+//            venda.alterarHoraVenda(horaVenda);
+//        } catch (DateTimeParseException e) {
+//            // Lidar com o caso em que a String não pode ser convertida para LocalTime
+//            System.out.println("Formato de hora inválido: " + horaString);
+//        }
+//        
+//        venda.alterarValorTotalVenda(Double.parseDouble("51.99"));
+//
+//        venda.alterarFormaPagamento(true);
+//        
+////        if(JanelaCadastroProduto.executar(OperacaoCadastroProduto.incluir, produto)){
+////            tabelaProduto.incluirProduto(produto);
+////        }
+//        controladorVenda.incluirVenda(venda);
+////        controladorItemVenda.incluirItemVenda(47, 1234, 3, controladorProduto);
     }//GEN-LAST:event_buCadastrarActionPerformed
 
     private void buVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buVoltarActionPerformed
@@ -216,7 +221,7 @@ public class JanelaVendas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaVendas dialog = new JanelaVendas(new javax.swing.JFrame(), true);
+                JanelaVendas dialog = new JanelaVendas(new javax.swing.JFrame(), true, tabelaProduto);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

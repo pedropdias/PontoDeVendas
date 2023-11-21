@@ -13,15 +13,24 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
     private OperacaoAdicionarItemVenda operacaoAdicionarItemVenda;
     private ItemVenda itemVenda;
     private Produto produto;
+    private static ControladorProduto tabelaProduto;
+    private static ControladorItemVenda controladorItemVenda;
     private boolean confirmado;
+    
+    public ItemVenda obterItemVendaJanelaAdicionarItem(){
+        return itemVenda;
+    }
     
     public boolean operacaoConfirmada(){
         return confirmado;
     }
     
     public static boolean executar(OperacaoAdicionarItemVenda operacaoAdicionarItemVenda,
-                                   ItemVenda itemVenda){
-        JanelaAdicionarItem janelaAdicionarItem = new JanelaAdicionarItem(null, operacaoAdicionarItemVenda, itemVenda);
+                                   ItemVenda itemVenda,
+                                   ControladorProduto tabelaProduto,
+                                   ControladorItemVenda controladorItemVenda1){
+        controladorItemVenda = controladorItemVenda1;
+        JanelaAdicionarItem janelaAdicionarItem = new JanelaAdicionarItem(null, operacaoAdicionarItemVenda, itemVenda, controladorItemVenda, tabelaProduto);
         janelaAdicionarItem.setLocationRelativeTo(null);
         janelaAdicionarItem.setVisible(true);
         return janelaAdicionarItem.operacaoConfirmada();
@@ -29,13 +38,16 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
     
     public JanelaAdicionarItem(java.awt.Frame parent,
                                 OperacaoAdicionarItemVenda operacaoAdicionarItemVenda,
-                                ItemVenda itemVenda){
+                                ItemVenda itemVenda,
+                                ControladorItemVenda controladorItemVenda,
+                                ControladorProduto tabelaProduto1){
         super(parent, true);
         
         confirmado = false;
         this.operacaoAdicionarItemVenda = operacaoAdicionarItemVenda;
         this.itemVenda = itemVenda;
-        this.produto = produto;
+        tabelaProduto = tabelaProduto1;
+        this.controladorItemVenda = controladorItemVenda;
         
         initComponents();
         
@@ -176,13 +188,14 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
     }//GEN-LAST:event_edNumeroItemActionPerformed
 
     private void buOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buOkActionPerformed
+        int numeroItem = Integer.parseInt(edNumeroItem.getText());
+        Produto produto = tabelaProduto.obterProdutoPorCodigo(Integer.parseInt(edCodigo.getText()));
+        int codigoProduto = produto.obterCodigo();
+        int qntVenda = Integer.parseInt(edQntVenda.getText());
+        tabelaProduto = JanelaPrincipal.obterControladorProduto();
+        controladorItemVenda.incluirItemVenda(numeroItem, codigoProduto, qntVenda, tabelaProduto);
+        confirmado = true;
 
-            itemVenda.alterarNumeroItem(Integer.parseInt(edNumeroItem.getText()));
-            itemVenda.alterarCodigo(Integer.parseInt(edCodigo.getText()));
-            itemVenda.alterarQntVenda(Integer.parseInt(edQntVenda.getText()));
-            itemVenda.alterarPrecoProduto(itemVenda.obterPrecoProduto());
-            itemVenda.alterarItemTotal(itemVenda.obterItemTotal());
-            confirmado = true;
         
         dispose();
     }//GEN-LAST:event_buOkActionPerformed

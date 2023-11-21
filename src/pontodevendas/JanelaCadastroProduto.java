@@ -114,36 +114,42 @@ public class JanelaCadastroProduto extends javax.swing.JDialog {
 
         jLabel6.setText("Última venda:");
 
+        edNome.setText("coca");
         edNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edNomeActionPerformed(evt);
             }
         });
 
+        edCodigo.setText("47");
         edCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edCodigoActionPerformed(evt);
             }
         });
 
+        edUnidade.setText("litro");
         edUnidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edUnidadeActionPerformed(evt);
             }
         });
 
+        edPreco.setText("33.33");
         edPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edPrecoActionPerformed(evt);
             }
         });
 
+        edQntEstoque.setText("200");
         edQntEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edQntEstoqueActionPerformed(evt);
             }
         });
 
+        edDataUltimaVenda.setText("12/12/2002");
         edDataUltimaVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edDataUltimaVendaActionPerformed(evt);

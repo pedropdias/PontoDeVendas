@@ -20,30 +20,30 @@ public class ControladorItemVenda extends AbstractTableModel {
    
     private String[] colunas = new String[]{"Número item","Código","Quantidade","Preço do Produto","Total do item"};
     private ArrayList<ItemVenda> itensVenda;
-
+    
     public ControladorItemVenda() {
-        this.itensVenda = new ArrayList<>();
+        this.itensVenda = new ArrayList<ItemVenda>();
     }
     
     
     @Override
     public int getColumnCount(){
-    return colunas.length;
+        return colunas.length;
     }
     
     @Override
     public int getRowCount(){
-    return itensVenda.size();
+        return this.itensVenda.size();
     }
     
     @Override
     public String getColumnName(int columnIndex){
-    return colunas[columnIndex];
+        return colunas[columnIndex];
     } 
     
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex){
-    return false;
+        return false;
     }
     
     @Override
@@ -70,19 +70,19 @@ public class ControladorItemVenda extends AbstractTableModel {
         switch(column){
             case COLUNA_NUMEROITEM:
                 itemVenda.alterarNumeroItem(Integer.parseInt(aValue.toString()));
-                break;
+                
             case COLUNA_CODIGO:
                 itemVenda.alterarCodigo(Integer.parseInt(aValue.toString()));
-                break;
+                
             case COLUNA_QNTVENDA:
                 itemVenda.alterarQntVenda(Integer.parseInt(aValue.toString()));
-                break;
+                
             case COLUNA_PRECOPRODUTO:
                 itemVenda.alterarPrecoProduto(Double.parseDouble(aValue.toString()));
-                break;
+                
             case COLUNA_ITEMTOTAL:
                 itemVenda.alterarItemTotal(Double.parseDouble(aValue.toString()));
-                break;
+               
         }
     }
         
@@ -91,8 +91,7 @@ public class ControladorItemVenda extends AbstractTableModel {
         return itensVenda.get(indice);
     }
     
-    public void incluirItemVendaTabela(ItemVenda itemVenda){
-        itensVenda.add(itemVenda);
+    public void incluirItemVendaTabela(){
         int ultimo = getRowCount()-1;
         fireTableRowsInserted(ultimo, ultimo);
     }
@@ -114,8 +113,8 @@ public class ControladorItemVenda extends AbstractTableModel {
     //
 
         
-    public void incluirItemVenda(int numeroItem, int codigoProduto, int qntVenda, ControladorProduto controladorProduto) {
-        Produto produto = controladorProduto.obterProdutoPorCodigo(codigoProduto);
+    public void incluirItemVenda(int numeroItem, int codigoProduto, int qntVenda, ControladorProduto tabelaProduto) {
+        Produto produto = tabelaProduto.obterProdutoPorCodigo(codigoProduto);
 
         if (produto != null) {
             double precoProduto = produto.obterPreco();
@@ -127,8 +126,17 @@ public class ControladorItemVenda extends AbstractTableModel {
             itemVenda.alterarQntVenda(qntVenda);
             itemVenda.alterarPrecoProduto(precoProduto);
             itemVenda.alterarItemTotal(itemTotal);
-
+            
+            System.out.println(itemVenda.obterNumeroItem());
+            System.out.println(itemVenda.obterCodigo());
+            System.out.println(itemVenda.obterQntVenda());
+            System.out.println(itemVenda.obterPrecoProduto());
+            System.out.println(itemVenda.obterItemTotal());
+            
             itensVenda.add(itemVenda);
+            
+            int ultimo = getRowCount()-1;
+            fireTableRowsInserted(ultimo, ultimo);
         } else {
             System.out.println("Produto não encontrado.");
         }
@@ -150,10 +158,10 @@ public class ControladorItemVenda extends AbstractTableModel {
         }
     }
     
-    public ItemVenda obterItemVenda(int numeroItem) {
+    public ItemVenda obterItemVenda(int codigo) {
         for (ItemVenda item : itensVenda) {
-            if (item.obterNumeroItem() == numeroItem) {
-                System.out.println(item.obterItemTotal());
+            if (item.obterCodigo() == codigo) {
+//                System.out.println(item.obterItemTotal());
                 return item;
             }
         }

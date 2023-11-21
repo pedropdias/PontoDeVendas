@@ -16,14 +16,16 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
 
     private ControladorVenda controladorVenda;
     private ControladorItemVenda controladorItemVenda;
-    private ControladorProduto controladorProduto;
+    private static ControladorProduto tabelaProduto;
     private FormaPagamento formaPagamento;
     private Venda venda;
+    private ItemVenda itemVenda;
     
     
-    public JanelaCadastroVenda(java.awt.Frame parent, boolean modal) {
+    public JanelaCadastroVenda(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto) {
         super(parent, modal);
         initComponents();
+        this.tabelaProduto = tabelaProduto;
         controladorItemVenda = new ControladorItemVenda();
         tabItemVenda.setModel(controladorItemVenda);
         venda = new Venda();
@@ -177,19 +179,19 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
             //        }
     }//GEN-LAST:event_buExcluirItemActionPerformed
 
+    
     private void buAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buAdicionarItemActionPerformed
+//                int numeroItem = itemVenda.obterNumeroItem();
+//                int codigoProduto = itemVenda.obterCodigo();
+//                int qntVenda = itemVenda.obterQntVenda();
+//                itemVenda = controladorItemVenda.obterItemVenda(itemVenda.obterNumeroItem());
 //                ItemVenda itemVenda = new ItemVenda();
-//                itemVenda.alterarNumeroItem(Integer.parseInt("21"));
-//                itemVenda.alterarCodigo(Integer.parseInt("1111"));
-//                itemVenda.alterarQntVenda(Integer.parseInt("1111"));
-//                itemVenda.alterarPrecoProduto(Double.parseDouble("1111"));
-//                itemVenda.alterarItemTotal(Double.parseDouble("1111"));
-//                controladorItemVenda.incluirItemVendaTabela(itemVenda);
 
-                ItemVenda itemVenda = new ItemVenda();
-                
-                if(JanelaAdicionarItem.executar(OperacaoAdicionarItemVenda.incluir, itemVenda)){
-                        controladorItemVenda.incluirItemVendaTabela(itemVenda);
+      
+
+                if(JanelaAdicionarItem.executar(OperacaoAdicionarItemVenda.incluir, itemVenda, tabelaProduto, controladorItemVenda)){
+//                        this.itemVenda = itemVenda;
+//                        controladorItemVenda.incluirItemVendaTabela();
                     }
         
         
@@ -234,7 +236,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaCadastroVenda dialog = new JanelaCadastroVenda(new javax.swing.JFrame(), true);
+                JanelaCadastroVenda dialog = new JanelaCadastroVenda(new javax.swing.JFrame(), true, tabelaProduto);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

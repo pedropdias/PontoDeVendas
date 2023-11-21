@@ -122,7 +122,7 @@ public class ControladorProduto extends AbstractTableModel {
       public Produto obterProdutoPorCodigo(int codigo) {
         for (Produto produto : produtos) {
             if (produto.obterCodigo() == codigo) {
-                System.out.println(produto.obterNome());
+//                System.out.println(produto.obterNome());
                 return produto;
             }
         }
@@ -139,10 +139,11 @@ public class ControladorProduto extends AbstractTableModel {
 //        } return produto.obterNome();
 //    }
 //    
-//    public void obterListaProdutos(){
+//    public ArrayList obterListaProdutos(){
 //        for (Produto produto: produtos) {
-//            System.out.println(produto.obterNome());
+//            
 //        }
+//        return 
 //    }
 
 

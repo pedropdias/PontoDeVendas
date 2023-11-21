@@ -16,13 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class JanelaProdutos extends javax.swing.JDialog {
 
-    private ControladorProduto tabelaProduto;
+    private static ControladorProduto tabelaProduto;
 
     
-    public JanelaProdutos(java.awt.Frame parent, boolean modal) {
+    public JanelaProdutos(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto) {
         super(parent, modal);
         initComponents();
-        tabelaProduto = new ControladorProduto();
+        this.tabelaProduto = tabelaProduto;
         tabProduto.setModel(tabelaProduto);
     }
 
@@ -211,7 +211,7 @@ public class JanelaProdutos extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaProdutos dialog = new JanelaProdutos(new javax.swing.JFrame(), true);
+                JanelaProdutos dialog = new JanelaProdutos(new javax.swing.JFrame(), true, tabelaProduto);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

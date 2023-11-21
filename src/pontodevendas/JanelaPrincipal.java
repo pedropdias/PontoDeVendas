@@ -10,13 +10,16 @@ package pontodevendas;
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JanelaPrincipal
-     */
+    private static ControladorProduto tabelaProduto;
+    
     public JanelaPrincipal() {
         initComponents();
+        tabelaProduto = new ControladorProduto();
     }
 
+    public static ControladorProduto obterControladorProduto(){
+        return tabelaProduto;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,13 +101,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void produtosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtosBtnActionPerformed
-        JanelaProdutos janelaProdutos = new JanelaProdutos(this, true);
+        JanelaProdutos janelaProdutos = new JanelaProdutos(this, true, this.tabelaProduto);
         janelaProdutos.setLocationRelativeTo(null);
         janelaProdutos.setVisible(true);
     }//GEN-LAST:event_produtosBtnActionPerformed
 
     private void vendasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendasBtnActionPerformed
-        JanelaVendas janelaVendas = new JanelaVendas(this, true);
+        JanelaVendas janelaVendas = new JanelaVendas(this, true, this.tabelaProduto);
         janelaVendas.setLocationRelativeTo(null);
         janelaVendas.setVisible(true);
     }//GEN-LAST:event_vendasBtnActionPerformed
