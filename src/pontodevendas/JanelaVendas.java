@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class JanelaVendas extends javax.swing.JDialog {
 
     private static ControladorVenda controladorVenda;
-    private static ControladorItemVenda controladorItemVenda;
+//    private static ControladorItemVenda controladorItemVenda;
     private static ControladorProduto tabelaProduto;
     private FormaPagamento formaPagamento;
     
@@ -25,7 +25,8 @@ public class JanelaVendas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.tabelaProduto = tabelaProduto;
-        this.controladorVenda = new ControladorVenda(controladorItemVenda, tabelaProduto);
+//        this.controladorItemVenda = new ControladorItemVenda();
+        this.controladorVenda = new ControladorVenda(tabelaProduto);
         tabVenda.setModel(controladorVenda);
     }
     

@@ -27,10 +27,25 @@ public class Venda {
     }
     
     public double obterValorTotalVenda(){
-        return valorTotalVenda;
+        System.out.println("itens venda size " + itensVenda.size());
+        if(itensVenda == null) {
+            return 5.0;
+        }
+        double valor = 0;
+        for (ItemVenda item : itensVenda) {
+            valor += item.obterItemTotal();
+            System.out.println("valor item: " + item.obterPrecoProduto());
+            System.out.println("valor item total: " + item.obterItemTotal());
+            System.out.println("valor item qtd: " + item.obterQntVenda());
+        }
+        
+        return valor;
     }
     
     public ArrayList<ItemVenda> obterItensVenda(){
+        if(itensVenda == null) {
+            return new ArrayList<ItemVenda>();
+        }
         return itensVenda;
     }
     public void alterarDataVenda(LocalDate dataVenda){

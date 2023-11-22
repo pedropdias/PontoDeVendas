@@ -17,9 +17,10 @@ public class ControladorVenda extends AbstractTableModel {
     private ControladorProduto controladorProduto;
     private FormaPagamento formaPagamento = new FormaPagamento();
 
-    public ControladorVenda(ControladorItemVenda controladorItemVenda, ControladorProduto controladorProduto) {
+//    public ControladorVenda(ControladorItemVenda controladorItemVenda, ControladorProduto controladorProduto) {
+    public ControladorVenda(ControladorProduto controladorProduto) {
         this.vendas = new ArrayList<Venda>();
-        this.controladorItemVenda = controladorItemVenda;
+//        this.controladorItemVenda = controladorItemVenda;
         this.controladorProduto = controladorProduto;
     }
     
@@ -64,7 +65,7 @@ public class ControladorVenda extends AbstractTableModel {
         case COLUNA_VALOR:
             return venda.obterValorTotalVenda();
         case COLUNA_FORMAPAGAMENTO:
-            return venda.obterFormaPagamento();
+            return venda.obterFormaPagamento() ? "Dinheiro" : "Cartão";
         }
         return ""; 
     }
@@ -135,11 +136,26 @@ public class ControladorVenda extends AbstractTableModel {
     public void adicionarItemVenda(Venda venda, int numeroItem, int codigoProduto, int qntVenda) {;
 //        controladorItemVenda.incluirItemVenda(numeroItem, codigoProduto, qntVenda, controladorProduto);
 //        vendas.add(venda);
+        System.out.println("aqui");
+        ArrayList<ItemVenda> auxItensVenda = venda.obterItensVenda();
+        ItemVenda auxItem = new ItemVenda();
+        
+        Produto auxProduto = controladorProduto.obterProdutoPorCodigo(codigoProduto);
+        
+        auxItem.alterarCodigo(codigoProduto);
+        auxItem.alterarNumeroItem(numeroItem);
+        auxItem.alterarQntVenda(qntVenda);
+        auxItem.alterarPrecoProduto(auxProduto.obterPreco());
+        auxItem.alterarItemTotal(0.0);
+        
+        auxItensVenda.add(auxItem);
+        
+        venda.alterarItensVenda(auxItensVenda);
         fireTableDataChanged();
     }
 
     public void removerItemVenda(Venda venda, int numeroItem) {
-        controladorItemVenda.removerItemVenda(numeroItem);
+//        controladorItemVenda.removerItemVenda(numeroItem);
     }
 
     public void registrarVenda(Venda venda){//, FormaPagamento formaPagamento) {
@@ -152,11 +168,11 @@ public class ControladorVenda extends AbstractTableModel {
 //        
         venda.alterarDataVenda(LocalDate.now());
         venda.alterarHoraVenda(LocalTime.now());
-        venda.alterarItensVenda(venda.obterItensVenda());
-        venda.alterarValorTotalVenda(venda.obterValorTotalVenda());
+//        venda.alterarItensVenda(venda.obterItensVenda());
+//        venda.alterarValorTotalVenda(venda.obterValorTotalVenda());
         registrarFormaPagamento(venda, formaPagamento);
         vendas.add(venda);
-        System.out.println(venda.obterValorTotalVenda());
+//        System.out.println(venda.obterValorTotalVenda());
 //        limparItensVenda(venda);
     }
 

@@ -121,14 +121,14 @@ public class ControladorItemVenda extends AbstractTableModel {
 
         if (produto != null) {
             double precoProduto = produto.obterPreco();
-            double itemTotal = precoProduto * qntVenda;
+//            double itemTotal = precoProduto * qntVenda;
 
             ItemVenda itemVenda = new ItemVenda();
             itemVenda.alterarNumeroItem(numeroItem);
             itemVenda.alterarCodigo(codigoProduto);
             itemVenda.alterarQntVenda(qntVenda);
             itemVenda.alterarPrecoProduto(precoProduto);
-            itemVenda.alterarItemTotal(itemTotal);
+            itemVenda.alterarItemTotal(itemVenda.obterItemTotal());
             
             System.out.println(itemVenda.obterNumeroItem());
             System.out.println(itemVenda.obterCodigo());

@@ -27,7 +27,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         initComponents();
         this.tabelaProduto = tabelaProduto;
         this.controladorVenda = controladorVenda;
-        this.controladorItemVenda = new ControladorItemVenda(); //nao instaciar novo, pegar a instancia criada na janela principal, como???
+        this.controladorItemVenda = new ControladorItemVenda();
         tabItemVenda.setModel(controladorItemVenda);
         venda = new Venda();
         

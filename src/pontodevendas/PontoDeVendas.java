@@ -44,7 +44,7 @@ public class PontoDeVendas {
 //        
 //        System.out.println(controladorItemVenda.obterItemVenda(47));
 //        
-//        ControladorVenda controladorVenda = new ControladorVenda(controladorItemVenda, controladorProduto);
+    //        ControladorVenda controladorVenda = new ControladorVenda(controladorItemVenda, controladorProduto);
 //        Venda venda = new Venda();
 //        controladorVenda.adicionarItemVenda(venda, 47, 1234, 5);
 //        controladorVenda.registrarVenda(venda);

@@ -43,6 +43,6 @@ public class ItemVenda {
         this.precoProduto = precoProduto;
     }
     public void alterarItemTotal(double itemTotal){
-        this.itemTotal = itemTotal;
+        this.itemTotal = qntVenda * precoProduto;
     }
 }
