@@ -130,11 +130,6 @@ public class ControladorItemVenda extends AbstractTableModel {
             itemVenda.alterarPrecoProduto(precoProduto);
             itemVenda.alterarItemTotal(itemVenda.obterItemTotal());
             
-            System.out.println(itemVenda.obterNumeroItem());
-            System.out.println(itemVenda.obterCodigo());
-            System.out.println(itemVenda.obterQntVenda());
-            System.out.println(itemVenda.obterPrecoProduto());
-            System.out.println(itemVenda.obterItemTotal());
             
             itensVenda.add(itemVenda);
             
@@ -175,17 +170,4 @@ public class ControladorItemVenda extends AbstractTableModel {
         return itensVenda;
     }
     
-//    public void alterarItemVenda(int indiceItemVenda, ItemVenda itemVenda){
-//        itensVenda.set(indiceItemVenda, itemVenda);
-//    }
-//    
-//    public void consultarItemVenda(int codigo){
-//        ItemVenda itemVenda = null;
-//        for (int i = 0; i < itensVenda.size(); i++){
-//            if(itensVenda.get(i).obterCodigo() == codigo){
-//                itemVenda = itensVenda.get(i);
-//                break;
-//            }
-//        }
-//    }
 }

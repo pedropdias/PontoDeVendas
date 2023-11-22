@@ -25,8 +25,6 @@ public class JanelaVendas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.tabelaProduto = tabelaProduto;
-//        this.controladorItemVenda = new ControladorItemVenda();
-//        this.controladorVenda = new ControladorVenda(tabelaProduto);
         this.controladorVenda = tabelaVenda;
         tabVenda.setModel(controladorVenda);
     }
@@ -140,15 +138,8 @@ public class JanelaVendas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this,"Data da venda: "+venda.obterDataVenda()+"\n"+
                                                            "Hora da venda: "+venda.obterHoraVenda().format(horaFormat)+"\n"+
                                                            "Valor da venda: "+venda.obterValorTotalVenda()+"\n"+
-                                                           "Forma de pagamento: "+venda.obterFormaPagamentoString());//+"\n"+
-//                                                           "Itens da venda: "+controladorItemVenda.obterItensVenda());
+                                                           "Forma de pagamento: "+venda.obterFormaPagamentoString());
             }
-        
-        
-//        if(indice >= 0){
-//            Produto produto = tabelaProduto.obterProduto(indice);
-//            JanelaCadastroProduto.executar(OperacaoCadastroProduto.consultar, produto);
-//        }
     }//GEN-LAST:event_buConsultarActionPerformed
 
     private void buCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCadastrarActionPerformed
@@ -157,37 +148,6 @@ public class JanelaVendas extends javax.swing.JDialog {
         janelaCadastroVenda.setVisible(true);
 
         Venda venda = new Venda();
-//        String dataString = "21/11/2023";
-//
-//        try {
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//            LocalDate dataVenda = LocalDate.parse(dataString, formatter);
-//            venda.alterarDataVenda(dataVenda);
-//        } catch (DateTimeParseException e) {
-//            // Lidar com o caso em que a String não pode ser convertida para LocalDate
-//            System.out.println("Formato de data inválido: " + dataString);
-//        }
-//        
-//        String horaString = "14:30";
-//
-//        try {
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-//            LocalTime horaVenda = LocalTime.parse(horaString, formatter);
-//            venda.alterarHoraVenda(horaVenda);
-//        } catch (DateTimeParseException e) {
-//            // Lidar com o caso em que a String não pode ser convertida para LocalTime
-//            System.out.println("Formato de hora inválido: " + horaString);
-//        }
-//        
-//        venda.alterarValorTotalVenda(Double.parseDouble("51.99"));
-//
-//        venda.alterarFormaPagamento(true);
-//        
-////        if(JanelaCadastroProduto.executar(OperacaoCadastroProduto.incluir, produto)){
-////            tabelaProduto.incluirProduto(produto);
-////        }
-//        controladorVenda.incluirVenda(venda);
-////        controladorItemVenda.incluirItemVenda(47, 1234, 3, controladorProduto);
     }//GEN-LAST:event_buCadastrarActionPerformed
 
     private void buVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buVoltarActionPerformed
@@ -224,7 +184,7 @@ public class JanelaVendas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaVendas dialog = new JanelaVendas(new javax.swing.JFrame(), true, tabelaProduto, tabelaVenda);
+                JanelaVendas dialog = new JanelaVendas(new javax.swing.JFrame(), true, tabelaProduto, controladorVenda);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

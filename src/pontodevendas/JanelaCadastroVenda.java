@@ -181,31 +181,18 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
                 if(indice >= 0){
                     controladorItemVenda.removerItemVendaTabela(indice);
                 }
-        //          if(indice >= 0){
-            //            tabelaProduto.removerProduto(indice);
-            //        }
     }//GEN-LAST:event_buExcluirItemActionPerformed
 
     
     private void buAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buAdicionarItemActionPerformed
-//                int numeroItem = itemVenda.obterNumeroItem();
-//                int codigoProduto = itemVenda.obterCodigo();
-//                int qntVenda = itemVenda.obterQntVenda();
-//                itemVenda = controladorItemVenda.obterItemVenda(itemVenda.obterNumeroItem());
-//                ItemVenda itemVenda = new ItemVenda();
-
-      
 
                 if(JanelaAdicionarItem.executar(OperacaoAdicionarItemVenda.incluir, itemVenda, tabelaProduto, controladorItemVenda)){
-//                        this.itemVenda = itemVenda;
-//                        controladorItemVenda.incluirItemVendaTabela();
                     }
         
         
     }//GEN-LAST:event_buAdicionarItemActionPerformed
 
     private void buFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buFormaPagamentoActionPerformed
-//        FormaPagamento formaPagamento = new FormaPagamento();
         JanelaFormaPagamento.executar(venda, formaPagamento);
     }//GEN-LAST:event_buFormaPagamentoActionPerformed
 

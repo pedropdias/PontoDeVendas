@@ -18,7 +18,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         initComponents();
         tabelaProduto = new ControladorProduto();
         controladorItemVenda = new ControladorItemVenda();
-//        tabelaVendas = new ControladorVenda(controladorItemVenda, tabelaProduto);
         tabelaVendas = new ControladorVenda(tabelaProduto);
     }
 

@@ -130,23 +130,4 @@ public class ControladorProduto extends AbstractTableModel {
         }
         return null;
     }
-//    
-//    public String consultarProdutoByCodigo(int codigo){
-//        Produto produto = null;
-//        for (int i = 0; i < produtos.size(); i++){
-//            if(produtos.get(i).obterCodigo() == codigo){
-//                produto = produtos.get(i);
-//                break;
-//            }
-//        } return produto.obterNome();
-//    }
-//    
-//    public ArrayList obterListaProdutos(){
-//        for (Produto produto: produtos) {
-//            
-//        }
-//        return 
-//    }
-
-
 }

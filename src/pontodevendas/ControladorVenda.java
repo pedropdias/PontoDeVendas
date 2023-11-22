@@ -140,9 +140,6 @@ public class ControladorVenda extends AbstractTableModel {
 
     
     public void adicionarItemVenda(Venda venda, int numeroItem, int codigoProduto, int qntVenda) {;
-//        controladorItemVenda.incluirItemVenda(numeroItem, codigoProduto, qntVenda, controladorProduto);
-//        vendas.add(venda);
-        System.out.println("aqui");
         ArrayList<ItemVenda> auxItensVenda = venda.obterItensVenda();
         ItemVenda auxItem = new ItemVenda();
         
@@ -161,25 +158,14 @@ public class ControladorVenda extends AbstractTableModel {
     }
 
     public void removerItemVenda(Venda venda, int numeroItem) {
-//        controladorItemVenda.removerItemVenda(numeroItem);
     }
 
     public void registrarVenda(Venda venda){//, FormaPagamento formaPagamento) {
         
-//        double valorTotalVenda = 0;
-//        for (ItemVenda item : venda.obterItensVenda()) {
-//            valorTotalVenda += item.obterItemTotal();
-//            venda.alterarValorTotalVenda(valorTotalVenda);
-//        }
-//        
         venda.alterarDataVenda(LocalDate.now());
         venda.alterarHoraVenda(LocalTime.now());
-//        venda.alterarItensVenda(venda.obterItensVenda());
-//        venda.alterarValorTotalVenda(venda.obterValorTotalVenda());
         registrarFormaPagamento(venda, formaPagamento);
         vendas.add(venda);
-//        System.out.println(venda.obterValorTotalVenda());
-//        limparItensVenda(venda);
     }
 
     public Venda consultarVenda(int indice) {
@@ -194,23 +180,4 @@ public class ControladorVenda extends AbstractTableModel {
         venda.alterarFormaPagamento(formaPagamentot.obterFormaPagamento());
         venda.alterarNumCartao(formaPagamentot.obterNumCartao());
     }
-
-//    public double calcularValorTotalVenda(Venda venda) {
-//        if(venda.obterItensVenda() == null){
-//            return 0.0;
-//        }
-//        double valorTotal = 0;
-//        for (ItemVenda item : venda.obterItensVenda()) {
-//            valorTotal += item.obterItemTotal();
-//        }
-//        return valorTotal;
-//    }
-
-//    public void obterValorTotalVendaTabela(Double valorTabela) {
-//        venda.obterValorTotalVenda();
-//    }
-
-//    public void limparItensVenda(Venda venda) {
-//        controladorItemVenda.limparItensVenda();
-//    }
 }

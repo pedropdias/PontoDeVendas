@@ -92,21 +92,18 @@ public class JanelaAdicionarItem extends javax.swing.JDialog {
 
         jLabel3.setText("Quantidade:");
 
-        edQntVenda.setText("3");
         edQntVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edQntVendaActionPerformed(evt);
             }
         });
 
-        edCodigo.setText("47");
         edCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edCodigoActionPerformed(evt);
             }
         });
 
-        edNumeroItem.setText("1");
         edNumeroItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edNumeroItemActionPerformed(evt);
