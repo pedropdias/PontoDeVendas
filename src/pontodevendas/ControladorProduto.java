@@ -1,6 +1,7 @@
 
 package pontodevendas;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class ControladorProduto extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int col){
         Produto produto = produtos.get(row);
+        DecimalFormat decimalFormat = new DecimalFormat("0.##");
         switch(col){
             case COLUNA_NOME:
                 return produto.obterNome();
@@ -59,7 +61,7 @@ public class ControladorProduto extends AbstractTableModel {
             case COLUNA_UNIDADE:
                 return produto.obterUnidade();
             case COLUNA_PRECO:
-                return produto.obterPreco();
+                return decimalFormat.format(produto.obterPreco());
             case COLUNA_QNT_ESTOQUE:
                 return produto.obterQntEstoque();
             case COLUNA_DATA_ULTIMA_VENDA:

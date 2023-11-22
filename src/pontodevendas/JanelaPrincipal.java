@@ -11,10 +11,14 @@ package pontodevendas;
 public class JanelaPrincipal extends javax.swing.JFrame {
 
     private static ControladorProduto tabelaProduto;
+    private static ControladorVenda tabelaVendas;
+    private static ControladorItemVenda controladorItemVenda;
     
     public JanelaPrincipal() {
         initComponents();
         tabelaProduto = new ControladorProduto();
+        controladorItemVenda = new ControladorItemVenda();
+        tabelaVendas = new ControladorVenda(controladorItemVenda, tabelaProduto);
     }
 
     public static ControladorProduto obterControladorProduto(){

@@ -1,6 +1,7 @@
 
 package pontodevendas;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.AbstractTableModel;
@@ -49,6 +50,7 @@ public class ControladorItemVenda extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int col){
         ItemVenda itemVenda = itensVenda.get(row);
+        DecimalFormat decimalFormat = new DecimalFormat("0.##");
         switch(col){
             case COLUNA_NUMEROITEM:
                 return itemVenda.obterNumeroItem();
@@ -57,9 +59,9 @@ public class ControladorItemVenda extends AbstractTableModel {
             case COLUNA_QNTVENDA:
                 return itemVenda.obterQntVenda();
             case COLUNA_PRECOPRODUTO:
-                return itemVenda.obterPrecoProduto();
+                return decimalFormat.format(itemVenda.obterPrecoProduto());
             case COLUNA_ITEMTOTAL:
-                return itemVenda.obterItemTotal();              
+                return decimalFormat.format(itemVenda.obterItemTotal()); 
         }
         return ""; 
     }
@@ -115,6 +117,7 @@ public class ControladorItemVenda extends AbstractTableModel {
         
     public void incluirItemVenda(int numeroItem, int codigoProduto, int qntVenda, ControladorProduto tabelaProduto) {
         Produto produto = tabelaProduto.obterProdutoPorCodigo(codigoProduto);
+        
 
         if (produto != null) {
             double precoProduto = produto.obterPreco();

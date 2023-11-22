@@ -17,15 +17,19 @@ public class Venda {
     private ArrayList<ItemVenda> itensVenda;
     private FormaPagamento formaPagamento = new FormaPagamento();
     
+    
+    
     public LocalDate obterDataVenda(){
          return dataVenda;
     }
     public LocalTime obterHoraVenda(){
         return horaVenda;
     }
+    
     public double obterValorTotalVenda(){
         return valorTotalVenda;
     }
+    
     public ArrayList<ItemVenda> obterItensVenda(){
         return itensVenda;
     }
@@ -35,9 +39,17 @@ public class Venda {
     public void alterarHoraVenda(LocalTime horaVenda){
         this.horaVenda = horaVenda;
     }
-    public void alterarValorTotalVenda(double valorTotalVenda){
+    
+    public void alterarValorTotalVenda(Double valorTotalVenda){
+        
+//        double Venda = 0;
+//        for (ItemVenda item : ControladorItemVenda.obterItensVenda()) {
+//            valorTotalVenda += item.obterItemTotal();
+//        }
+        
         this.valorTotalVenda = valorTotalVenda;
     }
+    
     public void alterarItensVenda(ArrayList<ItemVenda> itensVenda){
         this.itensVenda = itensVenda;
     }

@@ -92,10 +92,10 @@ public class ControladorVenda extends AbstractTableModel {
                 // Lidar com o caso em que a String não pode ser convertida para LocalTime
                 System.out.println("Formato de hora inválido: " + horaString);
             }
-            break;
+            
         case COLUNA_VALOR:
-            venda.alterarValorTotalVenda(Integer.parseInt(aValue.toString()));
-            break;
+            venda.alterarValorTotalVenda(Double.parseDouble(aValue.toString()));
+            
         case COLUNA_FORMAPAGAMENTO:
             FormaPagamento formaPagamento = (FormaPagamento) aValue;
 
@@ -106,7 +106,7 @@ public class ControladorVenda extends AbstractTableModel {
                     setValueAt("Cartão", row, column);
                 }
             }
-            break;
+            
             
         }
     }
@@ -132,25 +132,32 @@ public class ControladorVenda extends AbstractTableModel {
     
 
     
-    public void adicionarItemVenda(Venda venda, int numeroItem, int codigoProduto, int qntVenda) {
-        controladorItemVenda.incluirItemVenda(numeroItem, codigoProduto, qntVenda, controladorProduto);
-        atualizarValorTotalVenda(venda);
+    public void adicionarItemVenda(Venda venda, int numeroItem, int codigoProduto, int qntVenda) {;
+//        controladorItemVenda.incluirItemVenda(numeroItem, codigoProduto, qntVenda, controladorProduto);
+//        vendas.add(venda);
         fireTableDataChanged();
     }
 
     public void removerItemVenda(Venda venda, int numeroItem) {
         controladorItemVenda.removerItemVenda(numeroItem);
-        atualizarValorTotalVenda(venda);
     }
 
     public void registrarVenda(Venda venda){//, FormaPagamento formaPagamento) {
+        
+//        double valorTotalVenda = 0;
+//        for (ItemVenda item : venda.obterItensVenda()) {
+//            valorTotalVenda += item.obterItemTotal();
+//            venda.alterarValorTotalVenda(valorTotalVenda);
+//        }
+//        
         venda.alterarDataVenda(LocalDate.now());
         venda.alterarHoraVenda(LocalTime.now());
-        venda.alterarItensVenda(controladorItemVenda.obterItensVenda());
-        venda.alterarValorTotalVenda(calcularValorTotalVenda(venda));
+        venda.alterarItensVenda(venda.obterItensVenda());
+        venda.alterarValorTotalVenda(venda.obterValorTotalVenda());
         registrarFormaPagamento(venda, formaPagamento);
         vendas.add(venda);
-        limparItensVenda(venda);
+        System.out.println(venda.obterValorTotalVenda());
+//        limparItensVenda(venda);
     }
 
     public Venda consultarVenda(int indice) {
@@ -166,22 +173,22 @@ public class ControladorVenda extends AbstractTableModel {
         venda.alterarNumCartao(formaPagamentot.obterNumCartao());
     }
 
-    public double calcularValorTotalVenda(Venda venda) {
-        if(venda.obterItensVenda() == null){
-            return 0.0;
-        }
-        double valorTotal = 0;
-        for (ItemVenda item : venda.obterItensVenda()) {
-            valorTotal += item.obterItemTotal();
-        }
-        return valorTotal;
-    }
+//    public double calcularValorTotalVenda(Venda venda) {
+//        if(venda.obterItensVenda() == null){
+//            return 0.0;
+//        }
+//        double valorTotal = 0;
+//        for (ItemVenda item : venda.obterItensVenda()) {
+//            valorTotal += item.obterItemTotal();
+//        }
+//        return valorTotal;
+//    }
 
-    public void atualizarValorTotalVenda(Venda venda) {
-        venda.alterarValorTotalVenda(calcularValorTotalVenda(venda));
-    }
+//    public void obterValorTotalVendaTabela(Double valorTabela) {
+//        venda.obterValorTotalVenda();
+//    }
 
-    public void limparItensVenda(Venda venda) {
-        controladorItemVenda.limparItensVenda();
-    }
+//    public void limparItensVenda(Venda venda) {
+//        controladorItemVenda.limparItensVenda();
+//    }
 }

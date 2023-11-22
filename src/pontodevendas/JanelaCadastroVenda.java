@@ -14,22 +14,27 @@ import javax.swing.table.AbstractTableModel;
  */
 public class JanelaCadastroVenda extends javax.swing.JDialog {
 
-    private ControladorVenda controladorVenda;
-    private ControladorItemVenda controladorItemVenda;
+    private static ControladorVenda controladorVenda;
+    private static ControladorItemVenda controladorItemVenda;
     private static ControladorProduto tabelaProduto;
     private FormaPagamento formaPagamento;
     private Venda venda;
     private ItemVenda itemVenda;
     
     
-    public JanelaCadastroVenda(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto) {
+    public JanelaCadastroVenda(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto, ControladorVenda controladorVenda) {
         super(parent, modal);
         initComponents();
         this.tabelaProduto = tabelaProduto;
-        controladorItemVenda = new ControladorItemVenda();
+        this.controladorVenda = controladorVenda;
+        this.controladorItemVenda = new ControladorItemVenda(); //nao instaciar novo, pegar a instancia criada na janela principal, como???
         tabItemVenda.setModel(controladorItemVenda);
         venda = new Venda();
         
+    }
+    
+    public ControladorItemVenda obterControladorItemVenda(){
+        return controladorItemVenda;
     }
 
     /**
@@ -156,7 +161,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
 
         // Adiciona itens à venda
         for (int i = 0; i < controladorItemVenda.getRowCount(); i++) {
-            ItemVenda item = controladorItemVenda.obterItemVenda(i);
+            ItemVenda item = controladorItemVenda.obterItemVendaTabela(i);
             controladorVenda.adicionarItemVenda(venda, item.obterNumeroItem(), item.obterCodigo(), item.obterQntVenda());
         }
 
@@ -167,6 +172,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         controladorItemVenda.limparItensVendaTabela();
         // Atualiza a tabela de vendas
         firePropertyChange("vendas", null, null);
+        dispose();
     }//GEN-LAST:event_buCadastrarVendaActionPerformed
 
     private void buExcluirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buExcluirItemActionPerformed
@@ -236,7 +242,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaCadastroVenda dialog = new JanelaCadastroVenda(new javax.swing.JFrame(), true, tabelaProduto);
+                JanelaCadastroVenda dialog = new JanelaCadastroVenda(new javax.swing.JFrame(), true, tabelaProduto, controladorVenda);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

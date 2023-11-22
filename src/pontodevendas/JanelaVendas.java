@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class JanelaVendas extends javax.swing.JDialog {
 
-    private ControladorVenda controladorVenda;
-    private ControladorItemVenda controladorItemVenda;
+    private static ControladorVenda controladorVenda;
+    private static ControladorItemVenda controladorItemVenda;
     private static ControladorProduto tabelaProduto;
     private FormaPagamento formaPagamento;
     
@@ -25,7 +25,7 @@ public class JanelaVendas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.tabelaProduto = tabelaProduto;
-        controladorVenda = new ControladorVenda(controladorItemVenda, tabelaProduto);
+        this.controladorVenda = new ControladorVenda(controladorItemVenda, tabelaProduto);
         tabVenda.setModel(controladorVenda);
     }
     
@@ -149,7 +149,7 @@ public class JanelaVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_buConsultarActionPerformed
 
     private void buCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCadastrarActionPerformed
-        JanelaCadastroVenda janelaCadastroVenda = new JanelaCadastroVenda(null, true, tabelaProduto);
+        JanelaCadastroVenda janelaCadastroVenda = new JanelaCadastroVenda(null, true, tabelaProduto, controladorVenda);
         janelaCadastroVenda.setLocationRelativeTo(null);
         janelaCadastroVenda.setVisible(true);
 
