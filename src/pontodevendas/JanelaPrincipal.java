@@ -34,26 +34,26 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        produtosBtn = new javax.swing.JButton();
-        vendasBtn = new javax.swing.JButton();
+        buProdutos = new javax.swing.JButton();
+        buVendas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        fecharBtn = new javax.swing.JButton();
+        buFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        produtosBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        produtosBtn.setText("Produtos");
-        produtosBtn.addActionListener(new java.awt.event.ActionListener() {
+        buProdutos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        buProdutos.setText("Produtos");
+        buProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                produtosBtnActionPerformed(evt);
+                buProdutosActionPerformed(evt);
             }
         });
 
-        vendasBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        vendasBtn.setText("Vendas");
-        vendasBtn.addActionListener(new java.awt.event.ActionListener() {
+        buVendas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        buVendas.setText("Vendas");
+        buVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vendasBtnActionPerformed(evt);
+                buVendasActionPerformed(evt);
             }
         });
 
@@ -61,10 +61,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ponto de Vendas");
 
-        fecharBtn.setText("Fechar");
-        fecharBtn.addActionListener(new java.awt.event.ActionListener() {
+        buFechar.setText("Fechar");
+        buFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fecharBtnActionPerformed(evt);
+                buFecharActionPerformed(evt);
             }
         });
 
@@ -80,12 +80,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(235, 235, 235)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(produtosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(vendasBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(buProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(fecharBtn)
+                .addComponent(buFechar)
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -94,32 +94,32 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                 .addGap(85, 85, 85)
                 .addComponent(jLabel1)
                 .addGap(69, 69, 69)
-                .addComponent(produtosBtn)
+                .addComponent(buProdutos)
                 .addGap(30, 30, 30)
-                .addComponent(vendasBtn)
+                .addComponent(buVendas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(fecharBtn)
+                .addComponent(buFechar)
                 .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void produtosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtosBtnActionPerformed
+    private void buProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buProdutosActionPerformed
         JanelaProdutos janelaProdutos = new JanelaProdutos(this, true, this.tabelaProduto);
         janelaProdutos.setLocationRelativeTo(null);
         janelaProdutos.setVisible(true);
-    }//GEN-LAST:event_produtosBtnActionPerformed
+    }//GEN-LAST:event_buProdutosActionPerformed
 
-    private void vendasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendasBtnActionPerformed
-        JanelaVendas janelaVendas = new JanelaVendas(this, true, this.tabelaProduto);
+    private void buVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buVendasActionPerformed
+        JanelaVendas janelaVendas = new JanelaVendas(this, true, this.tabelaProduto, tabelaVendas);
         janelaVendas.setLocationRelativeTo(null);
         janelaVendas.setVisible(true);
-    }//GEN-LAST:event_vendasBtnActionPerformed
+    }//GEN-LAST:event_buVendasActionPerformed
 
-    private void fecharBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharBtnActionPerformed
+    private void buFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buFecharActionPerformed
         dispose();
-    }//GEN-LAST:event_fecharBtnActionPerformed
+    }//GEN-LAST:event_buFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,9 +157,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton fecharBtn;
+    private javax.swing.JButton buFechar;
+    private javax.swing.JButton buProdutos;
+    private javax.swing.JButton buVendas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton produtosBtn;
-    private javax.swing.JButton vendasBtn;
     // End of variables declaration//GEN-END:variables
 }

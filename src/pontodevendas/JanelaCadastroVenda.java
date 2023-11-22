@@ -17,17 +17,18 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
     private static ControladorVenda controladorVenda;
     private static ControladorItemVenda controladorItemVenda;
     private static ControladorProduto tabelaProduto;
-    private FormaPagamento formaPagamento;
+    private static FormaPagamento formaPagamento;
     private Venda venda;
     private ItemVenda itemVenda;
     
     
-    public JanelaCadastroVenda(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto, ControladorVenda controladorVenda) {
+    public JanelaCadastroVenda(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto, ControladorVenda controladorVenda, FormaPagamento formaPagamento) {
         super(parent, modal);
         initComponents();
         this.tabelaProduto = tabelaProduto;
         this.controladorVenda = controladorVenda;
         this.controladorItemVenda = new ControladorItemVenda();
+        this.formaPagamento = formaPagamento;
         tabItemVenda.setModel(controladorItemVenda);
         venda = new Venda();
         
@@ -204,7 +205,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_buAdicionarItemActionPerformed
 
     private void buFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buFormaPagamentoActionPerformed
-        FormaPagamento formaPagamento = new FormaPagamento();
+//        FormaPagamento formaPagamento = new FormaPagamento();
         JanelaFormaPagamento.executar(venda, formaPagamento);
     }//GEN-LAST:event_buFormaPagamentoActionPerformed
 
@@ -242,7 +243,7 @@ public class JanelaCadastroVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaCadastroVenda dialog = new JanelaCadastroVenda(new javax.swing.JFrame(), true, tabelaProduto, controladorVenda);
+                JanelaCadastroVenda dialog = new JanelaCadastroVenda(new javax.swing.JFrame(), true, tabelaProduto, controladorVenda, formaPagamento);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

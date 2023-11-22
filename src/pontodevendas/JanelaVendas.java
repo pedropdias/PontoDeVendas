@@ -17,16 +17,17 @@ import javax.swing.JOptionPane;
 public class JanelaVendas extends javax.swing.JDialog {
 
     private static ControladorVenda controladorVenda;
-//    private static ControladorItemVenda controladorItemVenda;
+    private static ControladorVenda tabelaVenda;
     private static ControladorProduto tabelaProduto;
     private FormaPagamento formaPagamento;
     
-    public JanelaVendas(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto) {
+    public JanelaVendas(java.awt.Frame parent, boolean modal, ControladorProduto tabelaProduto, ControladorVenda tabelaVenda) {
         super(parent, modal);
         initComponents();
         this.tabelaProduto = tabelaProduto;
 //        this.controladorItemVenda = new ControladorItemVenda();
-        this.controladorVenda = new ControladorVenda(tabelaProduto);
+//        this.controladorVenda = new ControladorVenda(tabelaProduto);
+        this.controladorVenda = tabelaVenda;
         tabVenda.setModel(controladorVenda);
     }
     
@@ -132,13 +133,14 @@ public class JanelaVendas extends javax.swing.JDialog {
 
     private void buConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buConsultarActionPerformed
         int indice = tabVenda.getSelectedRow();
+        DateTimeFormatter horaFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
         
         if (indice >= 0){
             Venda venda = controladorVenda.obterVenda(indice);
             JOptionPane.showMessageDialog(this,"Data da venda: "+venda.obterDataVenda()+"\n"+
-                                                           "Hora da venda: "+venda.obterHoraVenda()+"\n"+
+                                                           "Hora da venda: "+venda.obterHoraVenda().format(horaFormat)+"\n"+
                                                            "Valor da venda: "+venda.obterValorTotalVenda()+"\n"+
-                                                           "Forma de pagamento: "+venda.obterFormaPagamento());//+"\n"+
+                                                           "Forma de pagamento: "+venda.obterFormaPagamentoString());//+"\n"+
 //                                                           "Itens da venda: "+controladorItemVenda.obterItensVenda());
             }
         
@@ -150,7 +152,7 @@ public class JanelaVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_buConsultarActionPerformed
 
     private void buCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCadastrarActionPerformed
-        JanelaCadastroVenda janelaCadastroVenda = new JanelaCadastroVenda(null, true, tabelaProduto, controladorVenda);
+        JanelaCadastroVenda janelaCadastroVenda = new JanelaCadastroVenda(null, true, tabelaProduto, controladorVenda, formaPagamento);
         janelaCadastroVenda.setLocationRelativeTo(null);
         janelaCadastroVenda.setVisible(true);
 
@@ -222,7 +224,7 @@ public class JanelaVendas extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaVendas dialog = new JanelaVendas(new javax.swing.JFrame(), true, tabelaProduto);
+                JanelaVendas dialog = new JanelaVendas(new javax.swing.JFrame(), true, tabelaProduto, tabelaVenda);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

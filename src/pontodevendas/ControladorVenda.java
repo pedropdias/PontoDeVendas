@@ -1,8 +1,10 @@
 
 package pontodevendas;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -15,12 +17,12 @@ public class ControladorVenda extends AbstractTableModel {
     private ArrayList<Venda> vendas;
     private ControladorItemVenda controladorItemVenda;
     private ControladorProduto controladorProduto;
-    private FormaPagamento formaPagamento = new FormaPagamento();
+    private FormaPagamento formaPagamento;
 
 //    public ControladorVenda(ControladorItemVenda controladorItemVenda, ControladorProduto controladorProduto) {
     public ControladorVenda(ControladorProduto controladorProduto) {
         this.vendas = new ArrayList<Venda>();
-//        this.controladorItemVenda = controladorItemVenda;
+        this.formaPagamento = new FormaPagamento(); // aqui a instancia
         this.controladorProduto = controladorProduto;
     }
     
@@ -31,6 +33,8 @@ public class ControladorVenda extends AbstractTableModel {
     private static final int COLUNA_FORMAPAGAMENTO = 3;
     private String[] colunas = new String[]{"Data","Hora","Valor","Forma de Pagamento"};
     //
+    
+    private static final String PATTERN_TIME = "HH:mm:ss";
     
     
     
@@ -57,13 +61,15 @@ public class ControladorVenda extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int col){
     Venda venda = vendas.get(row);
+    DecimalFormat decimalFormat = new DecimalFormat("0.##");
+    DateTimeFormatter horaFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
     switch(col){
         case COLUNA_DATA:
             return venda.obterDataVenda();
         case COLUNA_HORA:
-            return venda.obterHoraVenda();
+            return venda.obterHoraVenda().format(horaFormat);
         case COLUNA_VALOR:
-            return venda.obterValorTotalVenda();
+            return decimalFormat.format(venda.obterValorTotalVenda());
         case COLUNA_FORMAPAGAMENTO:
             return venda.obterFormaPagamento() ? "Dinheiro" : "Cartão";
         }

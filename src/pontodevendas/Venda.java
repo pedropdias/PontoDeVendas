@@ -73,6 +73,10 @@ public class Venda {
        return formaPagamento.obterFormaPagamento();
     }
     
+    public String obterFormaPagamentoString() {
+       return formaPagamento.obterFormaPagamentoString();
+    }
+    
     public String obterNumCartao(){
         return formaPagamento.obterNumCartao();
     }

@@ -32,8 +32,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="produtosBtn" max="32767" attributes="0"/>
-                          <Component id="vendasBtn" max="32767" attributes="0"/>
+                          <Component id="buProdutos" max="32767" attributes="0"/>
+                          <Component id="buVendas" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -41,7 +41,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="fecharBtn" min="-2" max="-2" attributes="0"/>
+              <Component id="buFechar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -52,18 +52,18 @@
               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-              <Component id="produtosBtn" min="-2" max="-2" attributes="0"/>
+              <Component id="buProdutos" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="vendasBtn" min="-2" max="-2" attributes="0"/>
+              <Component id="buVendas" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="67" max="32767" attributes="0"/>
-              <Component id="fecharBtn" min="-2" max="-2" attributes="0"/>
+              <Component id="buFechar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="produtosBtn">
+    <Component class="javax.swing.JButton" name="buProdutos">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -71,10 +71,10 @@
         <Property name="text" type="java.lang.String" value="Produtos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="produtosBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buProdutosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="vendasBtn">
+    <Component class="javax.swing.JButton" name="buVendas">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -82,7 +82,7 @@
         <Property name="text" type="java.lang.String" value="Vendas"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendasBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buVendasActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -94,12 +94,12 @@
         <Property name="text" type="java.lang.String" value="Ponto de Vendas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="fecharBtn">
+    <Component class="javax.swing.JButton" name="buFechar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fecharBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buFecharActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
